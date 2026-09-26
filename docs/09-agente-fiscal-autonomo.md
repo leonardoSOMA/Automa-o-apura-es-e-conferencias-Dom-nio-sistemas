@@ -100,8 +100,9 @@ muda com a CBS.
    funciona o MFA do login.
 4. **Integra Contador** contratado e configurado na Domínio, com procuração dos clientes para o PGDAS-D.
    **e-Contínuo** do Acessórias instalado no computador; o token da API é opcional.
-5. Este **repositório clonado** no computador, por exemplo em `C:\automacao-fiscal`, e a lista das **5 empresas do
-   piloto**.
+5. Este **repositório clonado** no computador, por exemplo em `C:\automacao-fiscal`, com o **Python 3** instalado. As
+   ferramentas usam só a biblioteca padrão.
+6. A lista das **5 empresas do piloto**.
 
 ## Segurança
 
