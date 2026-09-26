@@ -23,8 +23,9 @@ Procedimentos (skills):
 
 ## Onde o agente roda
 
-- Numa sessão do Claude **no computador do escritório** onde a Domínio Web está instalada, com *Computer use* ligado
-  no app desktop do Claude e este repositório clonado. Uma sessão na nuvem não enxerga a tela da Domínio.
+- Numa sessão do app desktop do Claude (aba Code) **no computador do agente**: um Cloud PC Windows 11 (Windows 365)
+  com a Domínio Web instalada, *Computer use* ligado e este repositório clonado. Ver `docs/10-servidor-do-agente.md`.
+  Uma sessão do Claude Code na nuvem não enxerga a tela da Domínio.
 - Programa da Domínio Web (aberto pelo plugin): operar por computer use, com tela, mouse e teclado.
 - Páginas web (login da Domínio Web, Acessórias, SEFAZ): usar o navegador (Claude in Chrome). Evitar operar o
   portal do PGDAS-D: ele tem captcha e bloqueia robôs das 8h às 18h. O DAS sai pela Domínio via Integra Contador.
@@ -70,7 +71,7 @@ docs/                                plano do projeto
 trabalho/<AAAA-MM>/<codigo>/         pasta de trabalho de cada fechamento (fora do Git)
 ```
 
-No computador do escritório, o disco local aparece dentro da Domínio Web como a unidade **M:**. A pasta
+No computador do agente, o disco local aparece dentro da Domínio Web como a unidade **M:**. A pasta
 `C:\automacao-fiscal\trabalho` aparece como `M:\automacao-fiscal\trabalho`. Confirmar na primeira sessão.
 
 ## Testes

@@ -6,11 +6,13 @@ Claude) opera a Domínio Web pelas telas e fecha o mês das empresas menores do 
 
 ## Perfil confirmado (26/09/2026)
 
-- **Carteira:** cerca de 70 empresas menores, quase todas prestadoras de serviço do Simples.
-- **Piloto:** 1 comércio que compra de outros estados e 4 prestadoras.
+- **Carteira:** 356 empresas no Acessórias. No Simples, 63 sem inscrição estadual (as prestadoras, fase 1) e 161 com
+  inscrição estadual (comércio e indústria, fase 2). Todas em MG, a maioria em Três Corações.
+- **Piloto:** 5 empresas escolhidas, com o cadastro em `config/empresas_autorizadas.csv` (fora do Git). Pelo
+  Acessórias, três têm IE e duas são prestadoras (a confirmar).
 - **Integra Contador** já configurado na Domínio: o DAS sai pela própria Domínio.
 - **e-Contínuo** do Acessórias já em uso: o envio ao cliente é salvar o PDF na pasta.
-- **O agente roda num servidor físico do escritório.**
+- **O agente roda num Cloud PC Windows 11 na nuvem, ligado 24 h** (ver [10 · Servidor do agente](10-servidor-do-agente.md)).
 - **Pedido novo:** uma **IA analítica** que investiga erros técnicos. O exemplo dado foi o Fator R: CNAE sujeito,
   acumulador configurado sem fator r, e é preciso decidir se é erro ou se a empresa fatura por outra atividade, não
   sujeita.
@@ -32,8 +34,8 @@ A equipe aprova e resolve o que o agente não souber.
 
 ## Como o agente trabalha
 
-O agente roda no **computador do escritório** onde a Domínio Web está instalada, numa sessão do app desktop do Claude
-com *Computer use* ligado. Ele usa três "mãos":
+O agente roda num **computador Windows 11 dedicado**: o Cloud PC do Windows 365, com a Domínio Web instalada. Ele
+trabalha numa sessão do app desktop do Claude (aba Code), com *Computer use* ligado. Ele usa três "mãos":
 
 | Onde | Como o agente age | Exemplos |
 |---|---|---|
@@ -132,31 +134,35 @@ em reais.
 
 | Quando | Sessão | Resultado |
 |---|---|---|
-| Semana 1 | **Servidor e primeira prestadora:** deixar o agente rodando e fazer juntos a importação e a conferência das NFS-e | Etapas 1 a 3 mapeadas |
+| Semana 1 | **Cloud PC e primeira prestadora:** montar o Windows 365, testar a sessão desconectada e fazer juntos a importação e a conferência das NFS-e | Etapas 1 a 3 mapeadas |
 | Semana 2 | **Apuração com fator r e revisão técnica:** onde a Domínio mostra anexo, acumuladores e folha; AT-01 numa empresa real | Etapas 5 e 6 mapeadas |
 | Semana 3 | **DAS pelo Integra Contador e e-Contínuo:** fechar o ciclo de uma empresa | Etapas 7 a 9 mapeadas |
-| Semana 4 | **A empresa de comércio:** NF-e, antecipação e DIFAL com as regras da UF validadas | Etapa 4 mapeada |
-| A partir da semana 2 | **Varredura de Fator R nas 70 prestadoras** | Lista de erros e oportunidades por impacto |
-| Competência 10/2026 (novembro) | **Piloto: 1 comércio e 4 prestadoras no nível 2** | Tempo e custo reais por empresa |
-| Dezembro em diante | **Escala para as 70 prestadoras** | Nível 3 onde for liberado |
+| Semana 4 | **As empresas com IE:** NF-e, antecipação, ST e DIFAL com as regras de MG validadas | Etapa 4 mapeada |
+| A partir da semana 2 | **Varredura de Fator R nas 63 prestadoras** | Lista de erros e oportunidades por impacto |
+| Competência 10/2026 (novembro) | **Piloto: as 5 empresas escolhidas, no nível 2** | Tempo e custo reais por empresa |
+| Dezembro em diante | **Escala para as 63 prestadoras** | Nível 3 onde for liberado |
 
 Em janeiro/2027 o procedimento é revisto: DAS com CBS/IBS e o RBT12 com o novo período.
 
 ## O que precisa estar pronto
 
-1. O **servidor físico** com Windows, a Domínio Web e o plugin instalados.
+1. O **Cloud PC Windows 365 Enterprise** (4 vCPU, 16 GB, Brazil South), com a Domínio Web e o plugin instalados. A
+   montagem passo a passo está em [10 · Servidor do agente](10-servidor-do-agente.md).
    - Durante os fechamentos, a sessão precisa ficar aberta e desbloqueada, com resolução de tela fixa.
-   - Com acesso por área de trabalho remota, a tela não pode apagar ao desconectar. Ajustamos isso na Sessão 1.
-   - Se for Windows Server e o app do Claude não instalar, uma VM com Windows 10/11 no mesmo servidor resolve.
-2. **App desktop do Claude** instalado e conectado, com *Computer use* ligado em Configurações → App desktop →
-   Computer use, e a extensão **Claude in Chrome**.
+   - Ao desconectar, a tela não pode apagar. Testamos isso na Sessão 1.
+   - Windows Server não serve para o agente.
+2. **App desktop do Claude** com *Computer use* ligado em Configurações → App desktop → Computer use, e a extensão
+   **Claude in Chrome**.
+   - A conta do Claude tem de ser **Pro ou Max, de uma pessoa**: o Computer use não existe nos planos Team e
+     Enterprise.
+   - O ideal é que seja a mesma pessoa dona do Cloud PC, que aprova pelo celular.
 3. **Usuário da Domínio para o agente.** Confirmar com a Thomson Reuters se pode ser um usuário dedicado e como
    funciona o MFA do login.
 4. **Integra Contador** contratado e configurado na Domínio, com procuração dos clientes para o PGDAS-D.
    **e-Contínuo** do Acessórias instalado no computador; o token da API é opcional.
 5. Este **repositório clonado** no computador, por exemplo em `C:\automacao-fiscal`, com o **Python 3** instalado. As
    ferramentas usam só a biblioteca padrão.
-6. A lista das **5 empresas do piloto**.
+6. A lista das **5 empresas do piloto**: recebida, com o cadastro em `config/empresas_autorizadas.csv`, fora do Git.
 
 ## Segurança
 
@@ -176,9 +182,11 @@ Em janeiro/2027 o procedimento é revisto: DAS com CBS/IBS e o RBT12 com o novo 
 - **Erros de operação.** Um clique errado é possível. Por isso cada etapa termina com uma conferência (quantidade,
   valores, recálculo).
 - **Política da Thomson Reuters e login com MFA.** Precisa de resposta antes da escala.
-- **Custo da IA por empresa.** Depende de quantas telas cada fechamento percorre. O piloto mede.
+- **Plano do Claude.** O consumo depende de quantas telas cada fechamento percorre. O piloto mede se o Max 5x basta.
+- **Aprovação de acesso aos apps.** Hoje ela é pedida a cada sessão, pelo celular. No nível 3, alguém ainda libera o
+  início do lote.
 
-## Business case (70 prestadoras)
+## Business case (63 prestadoras)
 
 Premissas de exemplo, a medir no piloto:
 
@@ -187,30 +195,32 @@ Premissas de exemplo, a medir no piloto:
 | Horas por empresa por mês hoje | 2 h |
 | Parte assumida pelo agente | 70% no nível 2 · 85% no nível 3 |
 | Supervisão por empresa | 15 min no nível 2 · 5 min no nível 3 |
-| IA por empresa | R$ 15/mês |
+| Plano Claude Max 5x | ~R$ 540/mês (US$ 100 com IOF) |
 | Integra Contador | R$ 0,96 por DAS |
-| Computador | R$ 400/mês |
+| Servidor (Windows 365 Enterprise + Business Premium) | ~R$ 504/mês |
 | Supervisor | 20 h/mês |
 
 | Resultado | Nível 2 | Nível 3 |
 |---|---|---|
-| Horas da equipe | 140 h → 59,5 h | 140 h → 26,8 h |
-| Capacidade liberada | 0,6 FTE | 0,8 FTE |
-| Economia bruta anual | R$ 38,0 mil | R$ 53,3 mil |
-| Custo anual do agente | R$ 27,6 mil | R$ 27,6 mil |
-| Resultado líquido anual, antes das análises | R$ 10,3 mil | R$ 25,7 mil |
+| Horas da equipe | 126 h → 53,6 h | 126 h → 24,2 h |
+| Capacidade liberada | 0,5 FTE | 0,7 FTE |
+| Economia bruta anual | R$ 34,2 mil | R$ 48,0 mil |
+| Custo anual do agente | R$ 22,7 mil | R$ 22,7 mil |
+| Resultado líquido anual, antes das análises | R$ 11,5 mil | R$ 25,3 mil |
 
 **Leitura honesta:**
-- Para 70 prestadoras pequenas, o ganho em horas é modesto.
+- Para 63 prestadoras pequenas, o ganho em horas é modesto.
 - O valor maior tende a vir da IA analítica, que encontra Fator R errado, ISS retido pago duas vezes e retenções
   indevidas. Isso vira economia ou recuperação para o cliente e consultoria para o escritório.
 - A calculadora da página tem um campo para essa receita.
 
 ## O que preciso de você
 
-1. O **município** (ou municípios) das prestadoras, que define ISS e NFS-e, e a **UF** da empresa de comércio.
+1. **Perfil do piloto.** Pelo Acessórias, três empresas têm IE (uma delas aparece "com IE" sem IE cadastrada) e duas
+   são prestadoras. Está certo?
 2. As NFS-e das prestadoras já saem pelo **Emissor Nacional**?
 3. A folha das prestadoras está na **Domínio Folha**? O Fator R depende dela.
 4. **Quanto tempo**, mesmo estimado, cada prestadora leva por mês.
-5. O servidor é **Windows Server ou Windows 10/11**, e como é acessado?
-6. Os nomes das **5 empresas do piloto**.
+5. **Quem supervisiona o agente.** O Cloud PC e a conta Pro ou Max do Claude ficam no nome dessa pessoa.
+6. O escritório já tem **Microsoft 365 Business Premium, E3 ou E5**?
+7. A **lista de empresas da Domínio** (código × CNPJ).
