@@ -26,8 +26,11 @@ um relatório. A equipe aprova e resolve exceções.
 - [`CLAUDE.md`](CLAUDE.md): regras que o agente sempre segue.
 - [`.claude/skills/fechamento-simples/`](.claude/skills/fechamento-simples/SKILL.md): o procedimento do fechamento,
   que vamos completar juntos na tela.
-- `ferramentas/`: leitura de XML (`nfe.py`), recálculo do DAS (`das_simples.py`), antecipação e DIFAL
-  (`icms_entradas.py`) e API do Acessórias (`acessorias.py`), com testes em `testes/`.
+- [`.claude/skills/analise-tecnica/`](.claude/skills/analise-tecnica/SKILL.md): a IA analítica (Fator R, ISS retido,
+  retenções, CNAE × serviço), com pareceres e impacto em reais.
+- `ferramentas/`: NF-e (`nfe.py`), NFS-e (`nfse.py`), CNPJ e CNAEs (`cnpj.py`), recálculo do DAS
+  (`das_simples.py`), Fator R (`analise_fator_r.py`), antecipação e DIFAL (`icms_entradas.py`) e API do Acessórias
+  (`acessorias.py`), com testes em `testes/`.
 
 Os documentos 00 a 08 abaixo são a versão 1 do plano. Continuam valendo como base: catálogo de conferências, APIs
 oficiais, radar da Reforma e kit da Fase 0.

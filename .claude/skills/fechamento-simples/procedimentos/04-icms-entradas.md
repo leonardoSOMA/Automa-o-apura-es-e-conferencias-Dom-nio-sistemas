@@ -3,6 +3,10 @@
 **Objetivo:** calcular o ICMS devido na entrada das compras de outros estados: antecipação parcial, antecipação com
 ST e DIFAL de uso e consumo ou ativo. Depois, conferir com a Domínio.
 
+> **Só para empresas com inscrição estadual (contribuintes do ICMS).** Prestadora de serviço sem IE pula esta etapa.
+> Na compra de outro estado por não contribuinte, o DIFAL é recolhido pelo vendedor (EC 87/2015). Se a prestadora
+> tiver IE, siga normalmente.
+
 ## Passo a passo
 1. Rode a calculadora sobre os XML de entrada:
    ```

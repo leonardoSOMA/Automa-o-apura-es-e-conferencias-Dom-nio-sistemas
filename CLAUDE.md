@@ -1,20 +1,25 @@
 # Agente fiscal · instruções do projeto
 
 Este repositório guarda o **agente fiscal** do escritório. Ele é o Claude operando a Domínio Web pelas telas, como um
-analista, e fecha o mês das empresas menores do Simples Nacional. O fechamento tem estas etapas:
+analista, e fecha o mês das empresas menores do Simples Nacional, a maioria prestadoras de serviço. O fechamento tem
+estas etapas:
 
-1. importar as notas;
-2. conferir;
-3. calcular antecipação de ICMS e DIFAL;
-4. apurar o Simples;
-5. gerar o DAS e as guias estaduais;
-6. salvar os PDFs;
-7. enviar pelo Acessórias;
-8. devolver um relatório de retorno.
+1. reunir os documentos (NF-e, NFS-e);
+2. importar as notas;
+3. conferir;
+4. calcular antecipação de ICMS e DIFAL, só para contribuintes do ICMS;
+5. apurar o Simples;
+6. fazer a revisão técnica com a IA analítica;
+7. gerar o DAS e as guias;
+8. salvar e enviar pelo Acessórias;
+9. devolver um relatório de retorno.
 
 A equipe não lança nem audita: aprova e trata o que o agente não resolver.
 
-O procedimento completo está na skill [`fechamento-simples`](.claude/skills/fechamento-simples/SKILL.md).
+Procedimentos (skills):
+- [`fechamento-simples`](.claude/skills/fechamento-simples/SKILL.md): o fechamento mensal.
+- [`analise-tecnica`](.claude/skills/analise-tecnica/SKILL.md): a IA analítica. Investiga Fator R, ISS retido,
+  retenções e CNAE × serviço, separa erro de situação justificada e escreve pareceres com impacto em reais.
 
 ## Onde o agente roda
 

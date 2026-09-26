@@ -1,4 +1,4 @@
-# 06 · DAS e guias estaduais
+# 07 · DAS e guias estaduais
 
 **Objetivo:** transmitir o PGDAS-D, gerar o DAS e emitir as guias estaduais de antecipação e DIFAL.
 

@@ -7,7 +7,8 @@
 |---|---|---|---|
 | NF-e/NFC-e de saída | | | |
 | NF-e de entrada | | | |
-| NFS-e | | | |
+| NFS-e prestadas | | | |
+| NFS-e tomadas | | | |
 
 Divergências: <nenhuma | lista>
 
@@ -22,7 +23,15 @@ Divergências: <nenhuma | lista>
 | DAS pelo recálculo | |
 | Vencimento | 20/<MM+1>/<AAAA> |
 
-## ICMS nas entradas
+## Revisão técnica (IA analítica)
+| Análise | Conclusão | Impacto | Parecer |
+|---|---|---|---|
+| AT-01 Fator R e anexo | | | pareceres/AT-01.md |
+| AT-02 ISS retido | | | |
+| AT-03 Município de incidência | | | |
+| AT-05 Retenções indevidas | | | |
+
+## ICMS nas entradas (só contribuintes)
 | Tipo | Notas | Valor | Guia | Vencimento |
 |---|---|---|---|---|
 | Antecipação parcial | | | | |

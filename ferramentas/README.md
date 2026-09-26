@@ -7,6 +7,9 @@ Só usam a biblioteca padrão do Python.
 | Ferramenta | Para quê | Exemplo |
 |---|---|---|
 | `nfe.py` | Ler XML de NF-e/NFC-e e resumir o mês: entradas, saídas, canceladas, duplicadas | `python ferramentas/nfe.py resumo <pasta> --cnpj <CNPJ> --competencia 2026-09` |
+| `nfse.py` | Ler NFS-e (Nacional e ABRASF) e resumir por código de serviço, ISS retido, município e retenções | `python ferramentas/nfse.py resumo <pasta> --cnpj <CNPJ> --competencia 2026-09 --saida nfse.json` |
+| `cnpj.py` | CNAEs, Simples e situação do CNPJ (BrasilAPI), classificados pela tabela `config/tabelas/cnae_anexo.csv` | `python ferramentas/cnpj.py <CNPJ> --saida cnpj.json` |
+| `analise_fator_r.py` | AT-01: Fator R e anexo. Hipóteses, conclusão preliminar, impacto III × V e planejamento. | `python ferramentas/analise_fator_r.py dados.json --saida pareceres/AT-01` |
 | `das_simples.py` | Recalcular o DAS (Anexos I a V, segregação de ST, monofásico, ISS retido, fator r) | `python ferramentas/das_simples.py --rbt12 600000 --anexo I --receita normal=40000 --receita st=10000` |
 | `icms_entradas.py` | Antecipação parcial, antecipação com ST e DIFAL nas compras de outros estados, pelas regras de `config/uf/<UF>.json` | `python ferramentas/icms_entradas.py <pasta> --uf BA --cnpj <CNPJ> --saida trabalho/.../icms` |
 | `acessorias.py` | Enviar guias ao robô e-Contínuo e consultar entregas pela API do Acessórias | `python ferramentas/acessorias.py enviar DAS.pdf` (simula; `--confirmo-envio` envia) |

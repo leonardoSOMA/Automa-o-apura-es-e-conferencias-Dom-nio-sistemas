@@ -1,4 +1,4 @@
-# 07 · Enviar pelo Acessórias
+# 08 · Enviar pelo Acessórias
 
 **Objetivo:** entregar as guias ao cliente pelo Acessórias e deixar a obrigação marcada como entregue.
 

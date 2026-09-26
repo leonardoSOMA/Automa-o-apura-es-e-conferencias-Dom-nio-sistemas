@@ -53,3 +53,40 @@ def gravar(pasta: Path, nome: str, conteudo: str) -> Path:
     arq = pasta / nome
     arq.write_text(conteudo, encoding="utf-8")
     return arq
+
+
+NS_NFSE = "http://www.sped.fazenda.gov.br/nfse"
+NS_ABRASF = "http://www.abrasf.org.br/nfse.xsd"
+
+
+def nfse_nacional(numero, prestador, tomador, c_trib_nac, descricao, valor, tp_ret="1", op_simp="3",
+                  competencia="2026-09-01", ret_irrf=None, municipio="9999999"):
+    fed = f"<tribFed><vRetIRRF>{ret_irrf}</vRetIRRF></tribFed>" if ret_irrf else ""
+    return (
+        f'<?xml version="1.0" encoding="UTF-8"?><NFSe xmlns="{NS_NFSE}" versao="1.00">'
+        f'<infNFSe Id="NFS{numero:050d}"><nNFSe>{numero}</nNFSe><cLocIncid>{municipio}</cLocIncid>'
+        f'<emit><CNPJ>{prestador}</CNPJ></emit><valores><vISSQN>0.00</vISSQN></valores>'
+        f'<DPS versao="1.00"><infDPS Id="DPS1"><dhEmi>{competencia}T10:00:00-03:00</dhEmi><dCompet>{competencia}</dCompet>'
+        f'<prest><CNPJ>{prestador}</CNPJ><regTrib><opSimpNac>{op_simp}</opSimpNac></regTrib></prest>'
+        f'<toma><CNPJ>{tomador}</CNPJ></toma>'
+        f'<serv><cServ><cTribNac>{c_trib_nac}</cTribNac><xDescServ>{descricao}</xDescServ><cNBS>115021000</cNBS></cServ></serv>'
+        f'<valores><vServPrest><vServ>{valor}</vServ></vServPrest>'
+        f'<trib><tribMun><tribISSQN>1</tribISSQN><tpRetISSQN>{tp_ret}</tpRetISSQN><pAliq>2.01</pAliq></tribMun>{fed}</trib>'
+        f'</valores></infDPS></DPS></infNFSe></NFSe>')
+
+
+def nfse_abrasf(numero, prestador, tomador, item, cnae, descricao, valor, iss_retido="2", ret_ir=None):
+    ir = f"<ValorIr>{ret_ir}</ValorIr>" if ret_ir else ""
+    return (
+        f'<?xml version="1.0" encoding="UTF-8"?><CompNfse xmlns="{NS_ABRASF}"><Nfse versao="2.02"><InfNfse>'
+        f'<Numero>{numero}</Numero><CodigoVerificacao>AB{numero}</CodigoVerificacao><DataEmissao>2026-09-15T09:00:00</DataEmissao>'
+        f'<ValoresNfse><ValorIss>0</ValorIss></ValoresNfse>'
+        f'<PrestadorServico><IdentificacaoPrestador><CpfCnpj><Cnpj>{prestador}</Cnpj></CpfCnpj></IdentificacaoPrestador></PrestadorServico>'
+        f'<DeclaracaoPrestacaoServico><InfDeclaracaoPrestacaoServico><Competencia>2026-09-01</Competencia>'
+        f'<Servico><Valores><ValorServicos>{valor}</ValorServicos>{ir}<Aliquota>2.01</Aliquota></Valores>'
+        f'<IssRetido>{iss_retido}</IssRetido><ItemListaServico>{item}</ItemListaServico><CodigoCnae>{cnae}</CodigoCnae>'
+        f'<Discriminacao>{descricao}</Discriminacao><CodigoMunicipio>9999999</CodigoMunicipio></Servico>'
+        f'<Prestador><CpfCnpj><Cnpj>{prestador}</Cnpj></CpfCnpj></Prestador>'
+        f'<Tomador><IdentificacaoTomador><CpfCnpj><Cnpj>{tomador}</Cnpj></CpfCnpj></IdentificacaoTomador></Tomador>'
+        f'<OptanteSimplesNacional>1</OptanteSimplesNacional>'
+        f'</InfDeclaracaoPrestacaoServico></DeclaracaoPrestacaoServico></InfNfse></Nfse></CompNfse>')

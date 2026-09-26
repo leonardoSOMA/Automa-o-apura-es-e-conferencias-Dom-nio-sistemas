@@ -17,7 +17,14 @@
    - CSOSN coerente (AUD-C02);
    - saídas de produtos com ST ou monofásicos segregadas (AUD-C05), comparando o NCM dos itens com a tabela;
    - empresa sem movimento com XML (AUD-A09).
-4. Registre no `log.md` o resultado de cada conferência: "ok" ou a lista de divergências.
+4. **Prestadoras de serviço:** confira nas NFS-e e na Domínio:
+   - ISS retido (sim ou não) nota a nota;
+   - município de incidência do ISS;
+   - código de serviço;
+   - canceladas.
+
+   O resumo do `ferramentas/nfse.py` traz esses campos.
+5. Registre no `log.md` o resultado de cada conferência: "ok" ou a lista de divergências.
 
 ## Quando parar
 Qualquer nota faltando, sobrando ou com valor divergente. Corrigir é decisão da pessoa até a regra estar mapeada.

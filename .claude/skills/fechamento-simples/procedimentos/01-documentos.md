@@ -9,7 +9,12 @@ Cada fonte ainda precisa ser confirmada:
   ou download manual.
 - **NF-e/NFC-e de saída.** [MAPEAR] XML enviado pelo cliente (Acessórias, e-mail ou ERP), ou notas com o CNPJ do
   escritório no autXML.
-- **NFS-e prestadas e tomadas.** [MAPEAR] Portal da NFS-e Nacional ou prefeitura.
+- **NFS-e prestadas e tomadas**, que são o documento principal das prestadoras de serviço.
+  - Desde 01/11/2026 as ME/EPP do Simples emitem pelo Emissor Nacional, então as notas estão no Ambiente de Dados
+    Nacional (ADN).
+  - [MAPEAR] Como o escritório baixa hoje: portal, captura ou Domínio.
+  - Resumo das NFS-e: `python ferramentas/nfse.py resumo <pasta> --cnpj <CNPJ>` (serviços por código, ISS retido,
+    município de incidência, retenções).
 - **Outros.** [MAPEAR] CT-e, contas de consumo, documentos sem XML.
 
 ## Passo a passo
