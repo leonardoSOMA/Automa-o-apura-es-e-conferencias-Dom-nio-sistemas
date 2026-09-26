@@ -23,9 +23,10 @@ Procedimentos (skills):
 
 ## Onde o agente roda
 
-- Numa sessão do app desktop do Claude (aba Code) **no computador do agente**: um Cloud PC Windows 11 (Windows 365)
-  com a Domínio Web instalada, *Computer use* ligado e este repositório clonado. Ver `docs/10-servidor-do-agente.md`.
-  Uma sessão do Claude Code na nuvem não enxerga a tela da Domínio.
+- Numa sessão do app desktop do Claude (aba Code) **no computador do agente**: uma máquina Windows 11 dedicada, com
+  a Domínio Web instalada, *Computer use* ligado e este repositório clonado. No piloto é uma máquina física no
+  escritório; a alternativa na nuvem é o Windows 365. Ver `docs/10-servidor-do-agente.md`. Uma sessão do Claude Code
+  na nuvem não enxerga a tela da Domínio.
 - Programa da Domínio Web (aberto pelo plugin): operar por computer use, com tela, mouse e teclado.
 - Páginas web (login da Domínio Web, Acessórias, SEFAZ): usar o navegador (Claude in Chrome). Evitar operar o
   portal do PGDAS-D: ele tem captcha e bloqueia robôs das 8h às 18h. O DAS sai pela Domínio via Integra Contador.

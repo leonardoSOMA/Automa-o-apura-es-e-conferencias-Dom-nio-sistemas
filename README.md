@@ -23,7 +23,8 @@ Simples. Ele importa as notas, confere, calcula antecipação e DIFAL, apura, ge
 um relatório. A equipe aprova e resolve exceções.
 
 - [`docs/09-agente-fiscal-autonomo.md`](docs/09-agente-fiscal-autonomo.md): o plano da versão 2.
-- [`docs/10-servidor-do-agente.md`](docs/10-servidor-do-agente.md): onde contratar o servidor do agente e como montá-lo.
+- [`docs/10-servidor-do-agente.md`](docs/10-servidor-do-agente.md): o computador do agente (máquina física Windows 11 no
+  piloto, Windows 365 como alternativa) e como montá-lo.
 - [`CLAUDE.md`](CLAUDE.md): regras que o agente sempre segue.
 - [`.claude/skills/fechamento-simples/`](.claude/skills/fechamento-simples/SKILL.md): o procedimento do fechamento,
   que vamos completar juntos na tela.
@@ -59,7 +60,7 @@ oficiais, radar da Reforma e kit da Fase 0.
 | [07 · Reforma tributária e radar](docs/07-reforma-tributaria-e-radar.md) | Linha do tempo 2026–2033, prazos e fontes consultadas |
 | [08 · Fase 0: plano de 30 dias](docs/08-fase0-plano-30-dias.md) | Semana a semana, decisões e roteiros para TR, SERPRO e fornecedores |
 | [09 · Agente fiscal autônomo](docs/09-agente-fiscal-autonomo.md) | Versão 2: o agente opera a Domínio e fecha o mês das empresas menores |
-| [10 · Servidor do agente](docs/10-servidor-do-agente.md) | Windows 365 Enterprise em São Paulo: requisitos do Claude, custos, plano B e montagem |
+| [10 · Computador do agente](docs/10-servidor-do-agente.md) | Máquina física Windows 11 no piloto, Windows 365 como alternativa: requisitos do Claude, custos e montagem |
 
 ## Estrutura do repositório
 

@@ -8,11 +8,13 @@ Claude) opera a Domínio Web pelas telas e fecha o mês das empresas menores do 
 
 - **Carteira:** 356 empresas no Acessórias. No Simples, 63 sem inscrição estadual (as prestadoras, fase 1) e 161 com
   inscrição estadual (comércio e indústria, fase 2). Todas em MG, a maioria em Três Corações.
-- **Piloto:** 5 empresas escolhidas, com o cadastro em `config/empresas_autorizadas.csv` (fora do Git). Pelo
-  Acessórias, três têm IE e duas são prestadoras (a confirmar).
+- **Piloto:** 5 empresas escolhidas, com o cadastro em `config/empresas_autorizadas.csv` (fora do Git). Três têm IE
+  (uma ainda sem a IE cadastrada no Acessórias) e duas são prestadoras, que já têm certificado A1.
 - **Integra Contador** já configurado na Domínio: o DAS sai pela própria Domínio.
 - **e-Contínuo** do Acessórias já em uso: o envio ao cliente é salvar o PDF na pasta.
-- **O agente roda num Cloud PC Windows 11 na nuvem, ligado 24 h** (ver [10 · Servidor do agente](10-servidor-do-agente.md)).
+- **O agente roda numa máquina física dedicada com Windows 11 Pro no escritório, ligada 24 h.** O sócio supervisiona com a
+  própria conta do Claude. O escritório não tem Microsoft 365, e o Windows 365 fica como alternativa na nuvem (ver
+  [10 · Computador do agente](10-servidor-do-agente.md)).
 - **Pedido novo:** uma **IA analítica** que investiga erros técnicos. O exemplo dado foi o Fator R: CNAE sujeito,
   acumulador configurado sem fator r, e é preciso decidir se é erro ou se a empresa fatura por outra atividade, não
   sujeita.
@@ -34,8 +36,9 @@ A equipe aprova e resolve o que o agente não souber.
 
 ## Como o agente trabalha
 
-O agente roda num **computador Windows 11 dedicado**: o Cloud PC do Windows 365, com a Domínio Web instalada. Ele
-trabalha numa sessão do app desktop do Claude (aba Code), com *Computer use* ligado. Ele usa três "mãos":
+O agente roda num **computador Windows 11 dedicado**: no piloto, uma máquina física no escritório, com a Domínio Web
+instalada. Ele trabalha numa sessão do app desktop do Claude (aba Code), com *Computer use* ligado. Ele usa três
+"mãos":
 
 | Onde | Como o agente age | Exemplos |
 |---|---|---|
@@ -134,7 +137,7 @@ em reais.
 
 | Quando | Sessão | Resultado |
 |---|---|---|
-| Semana 1 | **Cloud PC e primeira prestadora:** montar o Windows 365, testar a sessão desconectada e fazer juntos a importação e a conferência das NFS-e | Etapas 1 a 3 mapeadas |
+| Semana 1 | **Máquina do agente e primeira prestadora:** montar a máquina, testar o acesso remoto sem travar a tela e fazer juntos a importação e a conferência das NFS-e | Etapas 1 a 3 mapeadas |
 | Semana 2 | **Apuração com fator r e revisão técnica:** onde a Domínio mostra anexo, acumuladores e folha; AT-01 numa empresa real | Etapas 5 e 6 mapeadas |
 | Semana 3 | **DAS pelo Integra Contador e e-Contínuo:** fechar o ciclo de uma empresa | Etapas 7 a 9 mapeadas |
 | Semana 4 | **As empresas com IE:** NF-e, antecipação, ST e DIFAL com as regras de MG validadas | Etapa 4 mapeada |
@@ -146,10 +149,11 @@ Em janeiro/2027 o procedimento é revisto: DAS com CBS/IBS e o RBT12 com o novo 
 
 ## O que precisa estar pronto
 
-1. O **Cloud PC Windows 365 Enterprise** (4 vCPU, 16 GB, Brazil South), com a Domínio Web e o plugin instalados. A
-   montagem passo a passo está em [10 · Servidor do agente](10-servidor-do-agente.md).
-   - Durante os fechamentos, a sessão precisa ficar aberta e desbloqueada, com resolução de tela fixa.
-   - Ao desconectar, a tela não pode apagar. Testamos isso na Sessão 1.
+1. A **máquina física dedicada com Windows 11 Pro**, com a Domínio Web e o plugin instalados. A montagem passo a
+   passo está em [10 · Computador do agente](10-servidor-do-agente.md).
+   - A máquina é só do agente. A sessão fica aberta e desbloqueada, com resolução de tela fixa.
+   - O acesso remoto compartilha a tela da própria máquina (Área de Trabalho Remota do Chrome ou AnyDesk). O RDP do
+     Windows bloqueia a sessão ao desconectar.
    - Windows Server não serve para o agente.
 2. **App desktop do Claude** com *Computer use* ligado em Configurações → App desktop → Computer use, e a extensão
    **Claude in Chrome**.
@@ -197,7 +201,7 @@ Premissas de exemplo, a medir no piloto:
 | Supervisão por empresa | 15 min no nível 2 · 5 min no nível 3 |
 | Plano Claude Max 5x | ~R$ 540/mês (US$ 100 com IOF) |
 | Integra Contador | R$ 0,96 por DAS |
-| Servidor (Windows 365 Enterprise + Business Premium) | ~R$ 504/mês |
+| Máquina física (energia e desgaste) | ~R$ 100/mês |
 | Supervisor | 20 h/mês |
 
 | Resultado | Nível 2 | Nível 3 |
@@ -205,8 +209,8 @@ Premissas de exemplo, a medir no piloto:
 | Horas da equipe | 126 h → 53,6 h | 126 h → 24,2 h |
 | Capacidade liberada | 0,5 FTE | 0,7 FTE |
 | Economia bruta anual | R$ 34,2 mil | R$ 48,0 mil |
-| Custo anual do agente | R$ 22,7 mil | R$ 22,7 mil |
-| Resultado líquido anual, antes das análises | R$ 11,5 mil | R$ 25,3 mil |
+| Custo anual do agente | R$ 17,8 mil | R$ 17,8 mil |
+| Resultado líquido anual, antes das análises | R$ 16,3 mil | R$ 30,2 mil |
 
 **Leitura honesta:**
 - Para 63 prestadoras pequenas, o ganho em horas é modesto.
@@ -216,11 +220,9 @@ Premissas de exemplo, a medir no piloto:
 
 ## O que preciso de você
 
-1. **Perfil do piloto.** Pelo Acessórias, três empresas têm IE (uma delas aparece "com IE" sem IE cadastrada) e duas
-   são prestadoras. Está certo?
-2. As NFS-e das prestadoras já saem pelo **Emissor Nacional**?
+1. A **lista de empresas da Domínio** (código × CNPJ), ou a confirmação de que os IDs do Acessórias são os códigos
+   da Domínio.
+2. A **Cerâmica** do piloto é indústria ou comércio?
 3. A folha das prestadoras está na **Domínio Folha**? O Fator R depende dela.
 4. **Quanto tempo**, mesmo estimado, cada prestadora leva por mês.
-5. **Quem supervisiona o agente.** O Cloud PC e a conta Pro ou Max do Claude ficam no nome dessa pessoa.
-6. O escritório já tem **Microsoft 365 Business Premium, E3 ou E5**?
-7. A **lista de empresas da Domínio** (código × CNPJ).
+5. O **plano da conta do Claude** do sócio: precisa ser Pro ou Max.
