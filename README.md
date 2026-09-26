@@ -18,9 +18,11 @@ Planejamento (e, a partir da Fase 1, o código) do ecossistema que vai automatiz
 
 ## Comece por aqui
 
-1. [`docs/00-sumario-executivo.md`](docs/00-sumario-executivo.md): uma página para os sócios.
-2. [`docs/08-fase0-plano-30-dias.md`](docs/08-fase0-plano-30-dias.md): o que fazer a partir de segunda-feira.
-3. [`fase0/Kit_Fase0_Diagnostico.xlsx`](fase0/Kit_Fase0_Diagnostico.xlsx): planilha da Fase 0. Tem cadastro mestre,
+1. [Página do plano](https://claude.ai/artifact/5xaa7eMNJtrRRHkoMFM7fU): versão visual e interativa, com
+   calculadora do business case e catálogo filtrável. O link é privado e só abre para quem tiver acesso.
+2. [`docs/00-sumario-executivo.md`](docs/00-sumario-executivo.md): uma página para os sócios.
+3. [`docs/08-fase0-plano-30-dias.md`](docs/08-fase0-plano-30-dias.md): o que fazer a partir de segunda-feira.
+4. [`fase0/Kit_Fase0_Diagnostico.xlsx`](fase0/Kit_Fase0_Diagnostico.xlsx): planilha da Fase 0. Tem cadastro mestre,
    levantamento de tempo, baseline, business case, catálogo de auditorias, plano de 30 dias e roteiro de reuniões.
 
 ## Documentos
@@ -43,6 +45,7 @@ Planejamento (e, a partir da Fase 1, o código) do ecossistema que vai automatiz
 docs/                 planejamento (este material)
 catalogo/             catálogo de regras de auditoria (CSV), futuro registro de regras do motor
 fase0/                kit de diagnóstico
+ferramentas/          geradores do catálogo (CSV) e do kit (xlsx), a partir de uma fonte única
 # planejado a partir da Fase 1
 conectores/           Distribuição DF-e, ADN (NFS-e), Integra Contador, API Domínio, extração do banco
 hub/                  modelo de dados (PostgreSQL) e cargas
