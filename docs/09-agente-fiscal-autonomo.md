@@ -159,7 +159,7 @@ Em janeiro/2027 o procedimento é revisto: DAS com CBS/IBS e o RBT12 com o novo 
    **Claude in Chrome**.
    - A conta do Claude tem de ser **Pro ou Max, de uma pessoa**: o Computer use não existe nos planos Team e
      Enterprise.
-   - O ideal é que seja a mesma pessoa dona do Cloud PC, que aprova pelo celular.
+   - A conta é a do sócio que supervisiona e aprova pelo celular.
 3. **Usuário da Domínio para o agente.** Confirmar com a Thomson Reuters se pode ser um usuário dedicado e como
    funciona o MFA do login.
 4. **Integra Contador** contratado e configurado na Domínio, com procuração dos clientes para o PGDAS-D.
