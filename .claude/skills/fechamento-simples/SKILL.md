@@ -14,7 +14,9 @@ Leia antes o [`CLAUDE.md`](../../../CLAUDE.md) do repositório. As regras de lá
 ## Antes de começar
 
 1. Confirme a empresa (código na Domínio e CNPJ) e a competência. Só siga se a empresa estiver em
-   `config/empresas_autorizadas.csv`, e anote o nível de autonomia dela (1, 2 ou 3).
+   `config/empresas_autorizadas.csv`, e anote o nível de autonomia dela (1, 2 ou 3). A empresa é identificada pelo
+   **CNPJ**. Se `codigo_dominio` estiver vazio, localize a empresa na Domínio pelo CNPJ e peça à pessoa para gravar o
+   código no arquivo. O `id_acessorias` é o ID da empresa no Acessórias.
 2. Leia a ficha da empresa em `empresas/<codigo>.md`, se existir: UF, anexo(s), ST, monofásicos, particularidades
    e contato no Acessórias.
 3. Crie a pasta de trabalho `trabalho/<AAAA-MM>/<codigo>/` e abra nela o `log.md`. Registre cada etapa com hora,
