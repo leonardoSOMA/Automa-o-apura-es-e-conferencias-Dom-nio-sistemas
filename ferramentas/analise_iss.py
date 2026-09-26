@@ -57,7 +57,8 @@ def at02_iss_retido(prestadas: dict, apuracao: dict) -> dict:
     if dif > 0:
         return _achado(
             "AT-02", "ISS retido não segregado", "Oportunidade", impacto, "pago a maior", fatos,
-            ["H1 · a apuração não marcou a receita como ISS retido (acumulador ou PGDAS-D sem a segregação)",
+            ["H1 · a apuração não marcou a receita como ISS retido (acumulador ou PGDAS-D sem a segregação exigida pela "
+         "LC 123, art. 18 §4º-A, II; o ISS retido é definitivo, art. 21 §4º, VII)",
              "H2 · a nota diz ISS retido, mas o tomador não reteve: confirmar com o cliente antes de corrigir",
              "H3 · notas de outra competência entraram no resumo"],
             "Se H1 se confirmar: ajustar o acumulador e retificar o PGDAS-D, porque o ISS dessas notas foi pago duas "
@@ -76,11 +77,12 @@ def at03_municipio(prestadas: dict, municipio: str, apuracao: dict) -> dict:
     municipios = set()
     for n in prestadas.get("notas", []):
         m = n.get("municipio_incidencia")
-        if m and municipio and m != municipio:
+        # ISS retido vai para a opção "com retenção" do PGDAS-D (AT-02); aqui só as notas sem retenção
+        if m and municipio and m != municipio and not n.get("iss_retido"):
             fora += _d(n.get("valor_servico"))
             municipios.add(m)
     declarado = _d(apuracao.get("receita_iss_outro_municipio"))
-    fatos = [f"Receita com ISS devido a outro município pelas notas: R$ {fora}"
+    fatos = [f"Receita sem retenção com ISS devido a outro município pelas notas: R$ {fora}"
              + (f" (municípios {', '.join(sorted(municipios))})" if municipios else ""),
              f"Receita declarada com ISS em outro município: R$ {declarado}"]
     if abs(fora - declarado) <= TOLERANCIA:
@@ -92,8 +94,9 @@ def at03_municipio(prestadas: dict, municipio: str, apuracao: dict) -> dict:
         ["H1 · serviço das exceções da LC 116, art. 3º, com ISS devido no local da prestação, sem indicação no PGDAS-D",
          "H2 · município de incidência preenchido errado na nota",
          "H3 · o ISS foi retido pelo tomador no outro município (ver AT-02)"],
-        "Conferir o tipo de serviço e o local da prestação. Se H1 se confirmar, informar o município correto no PGDAS-D "
-        "para o ISS não ser cobrado duas vezes. Decide: coordenador.")
+        "Conferir o tipo de serviço e o local da prestação. Se H1 se confirmar, usar no PGDAS-D a opção 'sem retenção, "
+        "com ISS devido a outro(s) município(s)' e indicar o município (LC 123, art. 18 §4º-A, V). Assim o ISS não é "
+        "cobrado duas vezes. Decide: coordenador.")
 
 
 def at05_retencoes(prestadas: dict, anexo: str) -> dict:
@@ -117,8 +120,9 @@ def at05_retencoes(prestadas: dict, anexo: str) -> dict:
     return _achado(
         "AT-05", "Retenções federais em notas de optante do Simples", "Oportunidade", indevido, "retido indevidamente",
         fatos + [f"Notas com retenção: {', '.join(str(x) for x in notas_com_retencao[:20])}"],
-        ["H1 · o tomador reteve sem necessidade, porque a nota não informou a condição de optante do Simples",
-         "H2 · INSS retido em serviço que não é cessão de mão de obra do Anexo IV",
+        ["H1 · o tomador reteve sem necessidade: optante do Simples é dispensado de IRRF (IN RFB 765/2007) e de "
+         "PIS/COFINS/CSLL (Lei 10.833/2003, art. 32)",
+         "H2 · INSS retido em serviço que não é cessão de mão de obra ou empreitada do Anexo IV (IN RFB 2.110/2022)",
          "H3 · o campo de retenção da nota está preenchido, mas não houve desconto no pagamento: confirmar com o cliente"],
         "Confirmar com o cliente se o valor foi descontado. Se foi, avaliar a restituição e orientar a informar a "
         "condição de optante nas próximas notas. Decide: sócio.")

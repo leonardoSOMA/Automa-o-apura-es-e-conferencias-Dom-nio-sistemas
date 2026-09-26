@@ -90,3 +90,10 @@ def nfse_abrasf(numero, prestador, tomador, item, cnae, descricao, valor, iss_re
         f'<Tomador><IdentificacaoTomador><CpfCnpj><Cnpj>{tomador}</Cnpj></CpfCnpj></IdentificacaoTomador></Tomador>'
         f'<OptanteSimplesNacional>1</OptanteSimplesNacional>'
         f'</InfDeclaracaoPrestacaoServico></DeclaracaoPrestacaoServico></InfNfse></Nfse></CompNfse>')
+
+
+def evento_nfse_cancelamento(chave50, tipo="e101101"):
+    return (f'<?xml version="1.0" encoding="UTF-8"?><evento xmlns="{NS_NFSE}" versao="1.00"><infEvento Id="EVT1">'
+            f'<pedRegEvento versao="1.00"><infPedReg Id="PRE1"><chNFSe>{chave50}</chNFSe>'
+            f'<{tipo}><xDesc>Cancelamento de NFS-e</xDesc><cMotivo>1</cMotivo></{tipo}></infPedReg></pedRegEvento>'
+            f'</infEvento></evento>')

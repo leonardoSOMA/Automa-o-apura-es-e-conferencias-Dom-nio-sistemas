@@ -49,6 +49,13 @@ class TestAnaliseISS(unittest.TestCase):
             [{"tipo": "normal", "valor": "8000"}])
         self.assertEqual(r["AT-03"]["conclusao"], "Indício, falta informação")
 
+    def test_outro_municipio_com_retencao_nao_entra_na_at03(self):
+        r, _ = self.cenario(
+            [nfse_nacional(1, EMPRESA, TOMADOR, "070201", "Obra", "8000.00", tp_ret="2", municipio="2222222")],
+            [{"tipo": "iss_retido", "valor": "8000"}])
+        self.assertEqual(r["AT-03"]["conclusao"], "Situação justificada")
+        self.assertEqual(r["AT-02"]["conclusao"], "Situação justificada")
+
     def test_retencao_federal_em_nota_de_optante(self):
         r, _ = self.cenario(
             [nfse_nacional(1, EMPRESA, TOMADOR, "170101", "Consultoria", "10000.00", municipio=CIDADE, ret_irrf="150.00")],
