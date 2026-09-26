@@ -66,7 +66,7 @@ CLAUDE.md             regras do agente fiscal
 .claude/skills/       procedimento do fechamento (fechamento-simples)
 docs/                 planejamento (versões 1 e 2)
 catalogo/             catálogo de conferências (CSV)
-config/               modelos: regras de ICMS por UF, empresas autorizadas, acumuladores
+config/               modelos (ICMS por UF, empresas autorizadas, acumuladores) e tabelas/cnae_anexo.csv
 ferramentas/          ferramentas do agente e geradores do catálogo e do kit
 testes/               testes das ferramentas (python -m unittest discover -s testes -t .)
 fase0/                kit de diagnóstico

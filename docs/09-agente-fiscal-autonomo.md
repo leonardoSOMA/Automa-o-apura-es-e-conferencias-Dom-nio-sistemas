@@ -89,13 +89,20 @@ O procedimento completo está em [`.claude/skills/fechamento-simples`](../.claud
 2. **Regra:** dispositivo e vigência.
 3. **Hipóteses:** todas as explicações possíveis.
 4. **Teste:** cada hipótese contra evidência.
-5. **Conclusão:** erro provável, indício, situação justificada ou oportunidade.
+5. **Conclusão:** erro provável, indício, situação justificada, oportunidade ou risco latente (configuração errada
+   que ainda não mudou o imposto).
 6. **Impacto em reais:** pelo recálculo do DAS.
 7. **Ação e quem decide.**
 
-A **AT-01 · Fator R** já tem ferramenta (`ferramentas/analise_fator_r.py`) e 7 cenários testados. Um deles é o caso
+A **AT-01 · Fator R** já tem ferramenta (`ferramentas/analise_fator_r.py`), tabela CNAE × anexo com 75 CNAEs e
+base legal (`config/tabelas/cnae_anexo.csv`, `docs/referencias/fator-r.md`) e 16 cenários testados. Um deles é o caso
 descrito: empresa com atividade sujeita e outra não sujeita, notas emitidas pela não sujeita. Nesse cenário a conclusão
-é "situação justificada", e não "erro". Catálogo completo:
+é "situação justificada", e não "erro". Outros cenários testados:
+- empresa sem folha nem pró-labore, que tem fator r de 0,01 e vai para o Anexo V;
+- acumulador fixo no Anexo III com fator r acima de 28% (risco latente);
+- atividade não sujeita apurada no Anexo V (pagamento a maior).
+
+Catálogo completo:
 
 | Código | Análise |
 |---|---|

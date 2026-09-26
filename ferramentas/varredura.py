@@ -24,7 +24,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import analise_fator_r  # noqa: E402
 from das_simples import _brl  # noqa: E402
 
-ORDEM = {"Erro provável": 0, "Oportunidade": 1, "Indício, falta informação": 2, "Situação justificada": 3}
+ORDEM = {"Erro provável": 0, "Oportunidade": 1, "Indício, falta informação": 2, "Risco latente": 3,
+         "Situação justificada": 4}
 
 
 def varrer(pasta: Path, tabela: dict | None = None) -> list:
@@ -66,6 +67,16 @@ def tabela_md(achados: list) -> str:
     return "\n".join(linhas)
 
 
+def cnaes_a_classificar(achados: list) -> dict:
+    """CNAEs da carteira que não estão na tabela, com as empresas que os têm. Classificar uma vez resolve todas."""
+    faltam = {}
+    for r in achados:
+        for c in r.get("cnaes") or []:
+            if c.get("anexo") == "?":
+                faltam.setdefault(c["formatado"], []).append((r.get("empresa") or {}).get("codigo", "?"))
+    return dict(sorted(faltam.items(), key=lambda kv: (-len(kv[1]), kv[0])))
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="Varredura de Fator R (AT-01) na carteira.")
     ap.add_argument("pasta")
@@ -73,6 +84,10 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     achados = varrer(Path(args.pasta))
     texto = "# Varredura AT-01 · Fator R e anexo\n\n" + tabela_md(achados) + "\n"
+    faltam = cnaes_a_classificar(achados)
+    if faltam:
+        texto += ("\n## CNAEs a classificar em config/tabelas/cnae_anexo.csv\n\n"
+                  + "\n".join(f"- {cnae}: empresas {', '.join(emps)}" for cnae, emps in faltam.items()) + "\n")
     print(texto)
     if args.saida:
         saida = Path(args.saida)

@@ -33,7 +33,9 @@ Para cada indício, siga os passos na ordem e registre cada um no parecer.
    - **Erro provável**: evidência forte contra a configuração atual;
    - **Indício, falta informação**: diga exatamente o que falta e quem tem;
    - **Situação justificada**: diga o motivo;
-   - **Oportunidade**: pagamento a maior ou economia possível.
+   - **Oportunidade**: pagamento a maior ou economia possível;
+   - **Risco latente**: a configuração está errada, mas hoje não muda o imposto. Diga quando vira erro. Exemplo:
+     acumulador fixo no Anexo III com fator r acima de 28%.
 6. **Impacto em reais.** Recalcule com `ferramentas/das_simples.py` o mês e, se houver dados, os últimos 12 meses.
    Nunca estime de cabeça.
 7. **Ação sugerida e quem decide.**
@@ -47,7 +49,7 @@ Salve em `trabalho/<AAAA-MM>/<codigo>/pareceres/<AT-xx>.md`:
 
 ```
 # <AT-xx> · <título> · <razão social> (<código>) · <competência>
-Conclusão: <Erro provável | Indício, falta informação | Situação justificada | Oportunidade>
+Conclusão: <Erro provável | Indício, falta informação | Situação justificada | Oportunidade | Risco latente>
 Impacto: <R$ no mês> · <R$ em 12 meses, se calculado> · <a maior | a menor>
 
 ## Fatos
@@ -64,7 +66,7 @@ Impacto: <R$ no mês> · <R$ em 12 meses, se calculado> · <a maior | a menor>
 
 | Código | Análise | Quando roda | Ferramentas |
 |---|---|---|---|
-| **AT-01** | **Fator R e anexo (III × V)** · [roteiro](analises/AT-01-fator-r.md) | Fechamento (antes de transmitir) e varredura | `cnpj.py`, `nfse.py`, `analise_fator_r.py`, `das_simples.py` |
+| **AT-01** | **Fator R e anexo (III × V)** e configuração dos acumuladores · [roteiro](analises/AT-01-fator-r.md) | Fechamento (antes de transmitir) e varredura | `cnpj.py` + `config/tabelas/cnae_anexo.csv`, `nfse.py`, `analise_fator_r.py`, `das_simples.py` |
 | AT-02 | ISS retido × segregação no PGDAS-D. Se o ISS retido não for segregado, ele é pago duas vezes. | Fechamento | `nfse.py`, `analise_iss.py` |
 | AT-03 | ISS devido a outro município (LC 116, art. 3º) informado corretamente | Fechamento | `nfse.py`, `analise_iss.py` |
 | AT-04 | CNAE × serviço faturado. Serviço sem CNAE no cadastro, atividade impeditiva, anexo incoerente com o que se fatura. | Varredura | `cnpj.py`, `nfse.py` |
@@ -88,7 +90,8 @@ As demais seguem o mesmo método. Os roteiros detalhados são escritos conforme 
   - prestadoras: AT-01, AT-02, AT-03, AT-05 e AT-08;
   - comércio: AT-08, AT-09 e AT-10.
 
-  "Erro provável" com impacto acima de R$ 50 no mês **bloqueia a transmissão** até uma pessoa decidir.
+  "Erro provável" com impacto acima de R$ 50 no mês **bloqueia a transmissão** até uma pessoa decidir. "Risco
+  latente" não bloqueia: entra no relatório com a correção sugerida.
 - **Na varredura da carteira** (`python ferramentas/varredura.py <pasta> --saida trabalho/varreduras/<data>`), sob
   demanda ou por trimestre:
   - roda todas as análises em todas as empresas autorizadas;

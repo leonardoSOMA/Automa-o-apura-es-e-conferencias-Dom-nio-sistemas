@@ -1,0 +1,76 @@
+cnae;descricao;anexo;fator_r;confianca;observacao;fonte
+4120-4/00;Construção de edifícios;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, I
+4399-1/03;Obras de alvenaria;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, I
+6201-5/01;Desenvolvimento de programas de computador sob encomenda;V;S;alta;;LC 123, art. 18 §5º-D, IV, e §5º-M, II
+6201-5/02;Web design;V;S;alta;;LC 123, art. 18 §5º-D, VI, e §5º-M, II
+6202-3/00;Desenvolvimento e licenciamento de programas de computador customizáveis;V;S;alta;;LC 123, art. 18 §5º-D, IV e V, e §5º-M, II
+6203-1/00;Desenvolvimento e licenciamento de programas de computador não-customizáveis;V;S;alta;;LC 123, art. 18 §5º-D, V, e §5º-M, II
+6204-0/00;Consultoria em tecnologia da informação;V;S;alta;;LC 123, art. 18 §5º-I, IX
+6209-1/00;Suporte técnico, manutenção e outros serviços em tecnologia da informação;V;S;média;Reparo de equipamento (hardware) é Anexo III (§5º-B, IX): conferir o serviço faturado;LC 123, art. 18 §5º-I, VI; SC Cosit 86/2015
+6311-9/00;Tratamento de dados, provedores de serviços de aplicação e serviços de hospedagem na internet;V;S;média;Tabelas comerciais divergem: conferir o serviço faturado;SC Cosit 86/2015
+6622-3/00;Corretores e agentes de seguros, de planos de previdência complementar e de saúde;III ou V;D;média;Corretagem de seguros é Anexo III (§5º-B, XVII, fora do §5º-M); corretagem e agenciamento de planos de saúde e de previdência vão pelo fator r;LC 123, art. 18 §5º-B, XVII; SC Cosit 233/2017
+6822-6/00;Gestão e administração da propriedade imobiliária;V;S;alta;Só imóveis de terceiros: locação de imóvel próprio impede a opção (art. 17, XV);LC 123, art. 18 §5º-D, I, e §5º-M, II
+6911-7/01;Serviços advocatícios;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, VII
+6920-6/01;Atividades de contabilidade;III;N;alta;ISS em valor fixo quando o município prevê (§22-A; atividade 9 no PGDAS-D);LC 123, art. 18 §5º-B, XIV
+6920-6/02;Atividades de consultoria e auditoria contábil e tributária;V;S;alta;;LC 123, art. 18 §5º-I, IX
+7020-4/00;Atividades de consultoria em gestão empresarial, exceto consultoria técnica específica;V;S;alta;;LC 123, art. 18 §5º-I, IX
+7111-1/00;Serviços de arquitetura;V;S;alta;;LC 123, art. 18 §5º-B, XVIII, e §5º-M, I
+7112-0/00;Serviços de engenharia;V;S;média;Execução de obra é Anexo IV (§5º-C, I): conferir o serviço faturado;LC 123, art. 18 §5º-I, VI
+7119-7/01;Serviços de cartografia, topografia e geodésia;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7119-7/02;Atividades de estudos geológicos;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7119-7/03;Serviços de desenho técnico relacionados à arquitetura e engenharia;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7119-7/04;Serviços de perícia técnica relacionados à segurança do trabalho;V;S;alta;;LC 123, art. 18 §5º-I, VIII
+7119-7/99;Atividades técnicas relacionadas à engenharia e arquitetura não especificadas anteriormente;V;S;média;Execução de obra é Anexo IV (§5º-C, I): conferir o serviço faturado;LC 123, art. 18 §5º-I, VI
+7120-1/00;Testes e análises técnicas;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7210-0/00;Pesquisa e desenvolvimento experimental em ciências físicas e naturais;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7220-7/00;Pesquisa e desenvolvimento experimental em ciências sociais e humanas;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7311-4/00;Agências de publicidade;V;S;alta;;LC 123, art. 18 §5º-I, X
+7312-2/00;Agenciamento de espaços para publicidade, exceto em veículos de comunicação;V;S;alta;;LC 123, art. 18 §5º-I, X e XI
+7319-0/02;Promoção de vendas;III;N;média;;SC Cosit 13/2022
+7319-0/04;Consultoria em publicidade;V;S;alta;;LC 123, art. 18 §5º-I, IX e X
+7410-2/02;Design de interiores;IV ou V;D;média;Design vai pelo fator r (§5º-I, VI); decoração de interiores é Anexo IV (§5º-C, I);LC 123, art. 18 §5º-C, I, e §5º-I, VI
+7410-2/03;Design de produto;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7410-2/99;Atividades de design não especificadas anteriormente;V;S;alta;;LC 123, art. 18 §5º-I, VI
+7490-1/01;Serviços de tradução, interpretação e similares;V;S;alta;;LC 123, art. 18 §5º-I, IV
+7490-1/03;Serviços de agronomia e de consultoria às atividades agrícolas e pecuárias;V;S;alta;;LC 123, art. 18 §5º-I, VI e IX
+7490-1/04;Atividades de intermediação e agenciamento de serviços e negócios em geral, exceto imobiliários;V;S;alta;;LC 123, art. 18 §5º-I, VII e XI
+7490-1/05;Agenciamento de profissionais para atividades esportivas, culturais e artísticas;V;S;alta;;LC 123, art. 18 §5º-I, XI
+7500-1/00;Atividades veterinárias;V;S;alta;;LC 123, art. 18 §5º-I, II
+7911-2/00;Agências de viagens;III;N;alta;;LC 123, art. 18 §5º-B, III
+8011-1/01;Atividades de vigilância e segurança privada;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, VI
+8121-4/00;Limpeza em prédios e em domicílios;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, VI
+8129-0/00;Atividades de limpeza não especificadas anteriormente;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, VI
+8130-3/00;Atividades paisagísticas;IV;N;alta;CPP fora do DAS;LC 123, art. 18 §5º-C, I
+8211-3/00;Serviços combinados de escritório e apoio administrativo;III;N;média;Tabelas comerciais divergem: ler a discriminação;SC Cosit 46/2018
+8219-9/99;Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente;III;N;média;Tabelas comerciais divergem: ler a discriminação;SC Cosit 46/2018
+8511-2/00;Educação infantil - creche;III;N;alta;;LC 123, art. 18 §5º-B, I
+8512-1/00;Educação infantil - pré-escola;III;N;alta;;LC 123, art. 18 §5º-B, I
+8513-9/00;Ensino fundamental;III;N;alta;;LC 123, art. 18 §5º-B, I
+8520-1/00;Ensino médio;III;N;alta;;LC 123, art. 18 §5º-B, I
+8541-4/00;Educação profissional de nível técnico;III;N;alta;;LC 123, art. 18 §5º-B, I
+8591-1/00;Ensino de esportes;V;S;alta;;LC 123, art. 18 §5º-D, III, e §5º-M, II
+8592-9/01;Ensino de dança;V;S;alta;;LC 123, art. 18 §5º-D, II, e §5º-M, II
+8593-7/00;Ensino de idiomas;III;N;alta;;LC 123, art. 18 §5º-B, I
+8599-6/03;Treinamento em informática;III;N;média;Enquadrado como escola livre;LC 123, art. 18 §5º-B, I
+8599-6/04;Treinamento em desenvolvimento profissional e gerencial;III;N;alta;;LC 123, art. 18 §5º-B, I
+8599-6/05;Cursos preparatórios para concursos;III;N;alta;;LC 123, art. 18 §5º-B, I
+8630-5/01;Atividade médica ambulatorial com recursos para realização de procedimentos cirúrgicos;V;S;alta;;LC 123, art. 18 §5º-B, XIX, e §5º-M, I
+8630-5/02;Atividade médica ambulatorial com recursos para realização de exames complementares;V;S;alta;;LC 123, art. 18 §5º-B, XIX, e §5º-M, I
+8630-5/03;Atividade médica ambulatorial restrita a consultas;V;S;alta;;LC 123, art. 18 §5º-B, XIX, e §5º-M, I
+8630-5/04;Atividade odontológica;V;S;alta;;LC 123, art. 18 §5º-B, XX, e §5º-M, I
+8630-5/06;Serviços de vacinação e imunização humana;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+8640-2/02;Laboratórios clínicos;V;S;alta;;LC 123, art. 18 §5º-D, XII, e §5º-M, II
+8640-2/05;Serviços de diagnóstico por imagem com uso de radiação ionizante, exceto tomografia;V;S;alta;;LC 123, art. 18 §5º-D, XIII, e §5º-M, II
+8640-2/07;Serviços de diagnóstico por imagem sem uso de radiação ionizante, exceto ressonância magnética;V;S;alta;;LC 123, art. 18 §5º-D, XIII, e §5º-M, II
+8650-0/01;Atividades de enfermagem;V;S;alta;;LC 123, art. 18 §5º-B, XIX, e §5º-M, I
+8650-0/02;Atividades de profissionais da nutrição;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+8650-0/03;Atividades de psicologia e psicanálise;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+8650-0/04;Atividades de fisioterapia;V;S;alta;;LC 123, art. 18 §5º-B, XVI, e §5º-M, I
+8650-0/05;Atividades de terapia ocupacional;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+8650-0/06;Atividades de fonoaudiologia;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+8690-9/03;Atividades de acupuntura;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+8690-9/04;Atividades de podologia;V;S;alta;;LC 123, art. 18 §5º-B, XXI, e §5º-M, I
+9313-1/00;Atividades de condicionamento físico;V;S;alta;;LC 123, art. 18 §5º-D, III, e §5º-M, II
+9511-8/00;Reparação e manutenção de computadores e de equipamentos periféricos;III;N;alta;;LC 123, art. 18 §5º-B, IX
+9602-5/01;Cabeleireiros, manicure e pedicure;III;N;alta;Serviço sem previsão nos Anexos IV e V;LC 123, art. 18 §5º-F
+9602-5/02;Atividades de estética e outros serviços de cuidados com a beleza;III;N;alta;Serviço sem previsão nos Anexos IV e V;LC 123, art. 18 §5º-F

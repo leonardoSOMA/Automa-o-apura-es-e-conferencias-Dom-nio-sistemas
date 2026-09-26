@@ -65,7 +65,7 @@ Procedimentos (skills):
 ```
 .claude/skills/fechamento-simples/   procedimento do agente (SKILL.md + etapas)
 ferramentas/                         calculadoras e leitores (DAS, ICMS nas entradas, NF-e)
-config/                              modelos de configuração (UF, empresas autorizadas)
+config/                              modelos de configuração (UF, empresas autorizadas) e tabela CNAE × anexo
 docs/                                plano do projeto
 trabalho/<AAAA-MM>/<codigo>/         pasta de trabalho de cada fechamento (fora do Git)
 ```

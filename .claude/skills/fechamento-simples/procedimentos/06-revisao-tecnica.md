@@ -14,3 +14,5 @@ si.
 - Conclusão **"Erro provável"** com impacto acima de R$ 50 no mês: **não transmita**. Leve o parecer para decisão.
 - **"Indício, falta informação":** peça a informação. Transmita só se a pessoa decidir seguir assim mesmo.
 - **"Oportunidade":** não bloqueia. Entra no relatório para o sócio avaliar.
+- **"Risco latente":** não bloqueia. Entra no relatório com a correção de configuração sugerida. A correção só é feita
+  com aprovação.
