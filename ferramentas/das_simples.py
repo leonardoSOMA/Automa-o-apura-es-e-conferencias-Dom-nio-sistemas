@@ -9,8 +9,15 @@ Uso:
 Tipos de receita:
     Anexos I e II: normal, st, monofasico, st_monofasico, exportacao
     Anexos III, IV e V: normal, iss_retido, exportacao
-Tabelas: LC 123/2006, Anexos I a V, na redação da LC 155/2016, vigentes de 01/2018 a 12/2026. A partir de 01/2027 a
-repartição muda com a CBS/IBS: as tabelas novas precisam ser incluídas antes de usar a ferramenta em 2027.
+Tabelas: LC 123/2006, Anexos I a V, na redação da LC 155/2016, vigentes de 01/2018 a 12/2026. As 30 linhas foram
+conferidas com o texto compilado da lei em 26/09/2026.
+
+Limites conhecidos:
+- A partir de 01/2027 a repartição muda com a CBS/IBS (Res. CGSN 190/2026). As tabelas novas estão anotadas em
+  docs/referencias/simples-nacional-tabelas.md e precisam ser carregadas e validadas antes do uso em 2027.
+- Faixa 6 (RBT12 acima de R$ 3,6 mi): calcula só os tributos federais. ICMS e ISS seguem regra própria.
+- Exportação: o PGDAS-D separa o RBT12 do mercado interno e do externo. Conferir o RBT12 usado.
+- Não existe piso de 2% para o ISS na repartição do DAS.
 """
 from __future__ import annotations
 
@@ -150,6 +157,8 @@ def calcular(rbt12, receitas: list) -> dict:
         if tipo not in TIPOS_POR_ANEXO[anexo]:
             raise ValueError(f"Tipo de receita '{tipo}' não se aplica ao Anexo {anexo}")
         p = percentuais(anexo, rbt12)
+        if p["por_tributo"].get("ISS", Decimal("0")) > TETO_ISS:
+            alertas.append(f"ISS acima de 5% no Anexo {anexo}, faixa {p['faixa']}: situação não prevista. Confira.")
         devidos = {t: pct for t, pct in p["por_tributo"].items() if t not in EXCLUSOES[tipo] and pct > 0}
         efetiva_segregada = sum(devidos.values(), Decimal("0"))
         valores = {t: dinheiro(valor * pct / 100) for t, pct in devidos.items()}
@@ -162,7 +171,9 @@ def calcular(rbt12, receitas: list) -> dict:
                        "aliquota_efetiva": p["aliquota_efetiva"], "aliquota_efetiva_segregada": efetiva_segregada,
                        "valor": direto, "por_tributo": valores, "teto_iss_aplicado": p["teto_iss_aplicado"]})
     if rbt12 > SUBLIMITE:
-        alertas.append("RBT12 acima do sublimite de R$ 3,6 mi: ICMS e ISS são recolhidos fora do DAS.")
+        alertas.append("RBT12 na faixa 6: o cálculo acima tem só os tributos federais. Se a empresa ainda não estiver "
+                       "impedida, ICMS e ISS entram no DAS pela alíquota efetiva da 5ª faixa; se estiver impedida, são "
+                       "pagos fora do DAS. Confira manualmente.")
     elif rbt12 > SUBLIMITE * Decimal("0.8"):
         alertas.append("RBT12 acima de 80% do sublimite de R$ 3,6 mi.")
     soma_tributos = sum(total_tributos.values(), Decimal("0"))

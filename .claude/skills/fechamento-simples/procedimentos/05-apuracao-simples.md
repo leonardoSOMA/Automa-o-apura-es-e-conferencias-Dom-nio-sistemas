@@ -18,6 +18,10 @@
    - fator R perto de 28% nos serviços;
    - DAS com variação acima de 30% em relação à média de 3 meses.
 
+> **A partir da competência 01/2027** a repartição do DAS muda com a CBS/IBS e o RBT12 passa a terminar um mês antes.
+> Até as tabelas novas serem carregadas e validadas (ver `docs/referencias/simples-nacional-tabelas.md`), o
+> recálculo de 2027 não vale: pare e avise.
+
 ## Quando parar
 Recálculo diferente da Domínio, qualquer alerta acima ou receita segregada que não bate com os itens das notas.
 

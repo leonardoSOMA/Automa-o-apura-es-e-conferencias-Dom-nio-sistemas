@@ -81,6 +81,16 @@ class TestCalculo(unittest.TestCase):
         self.assertEqual(das.rbt12_proporcional([], D("10000")), D("120000"))
         self.assertEqual(das.rbt12_proporcional(["10000", "20000"], D("5000")), D("180000"))
 
+    def test_faixa_6_avisa_que_icms_e_iss_ficam_de_fora(self):
+        r = das.calcular("4000000", [("I", "normal", "100000")])
+        self.assertNotIn("ICMS", r["linhas"][0]["por_tributo"])
+        self.assertTrue(any("faixa 6" in a for a in r["alertas"]))
+
+    def test_sem_piso_de_2_por_cento_para_o_iss(self):
+        # início da 2ª faixa do Anexo III: 6,00% x 32% = 1,92% de ISS, sem arredondar para 2%
+        p = das.percentuais("III", D("180000.01"))
+        self.assertEqual(p["por_tributo"]["ISS"].quantize(D("0.01")), D("1.92"))
+
     def test_alerta_de_sublimite(self):
         r = das.calcular("3000000", [("I", "normal", "1000")])
         self.assertTrue(any("80%" in a for a in r["alertas"]))
