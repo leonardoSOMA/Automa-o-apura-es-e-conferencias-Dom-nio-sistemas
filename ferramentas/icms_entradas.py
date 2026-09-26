@@ -28,6 +28,8 @@ SUL_SUDESTE_EXCETO_ES = {"MG", "PR", "RJ", "RS", "SC", "SP"}
 ORIGEM_IMPORTADA = {"1", "2", "3", "8"}
 FINALIDADES = {"revenda", "uso_consumo", "ativo"}
 CENTAVO = Decimal("0.01")
+AVISO_ST_A_CONFIRMAR = ("NCM possivelmente sujeito a ST na UF, sem MVA configurada: calculado sem ST. Conferir a "
+                        "legislação antes de gerar a guia")
 
 
 def dinheiro(v: Decimal) -> Decimal:
@@ -147,6 +149,8 @@ def calcular_item(nota: Nota, item, cfg: dict, finalidade: str) -> dict:
 
     mva = _por_ncm(cfg.get("antecipacao_st", {}).get("mva_por_ncm"), item.ncm)
     st = cfg.get("antecipacao_st", {})
+    if mva is None and _por_ncm({p: True for p in st.get("ncm_a_confirmar", [])}, item.ncm):
+        res["obs"].append(AVISO_ST_A_CONFIRMAR)
     if mva is not None and st.get("aplica", False):
         mva = _pct(mva)
         if st.get("usar_mva_ajustada", True) and aliq_inter < aliq_int:
@@ -201,6 +205,8 @@ def calcular(pasta: Path, uf: str, cnpj: str, cfg: dict, finalidades: list | Non
         avisos.append(f"Configuração {cfg.get('_arquivo')} NÃO validada: valores só para teste.")
     if any("presumida" in o for ln in linhas for o in ln["obs"]):
         avisos.append("Há itens com finalidade presumida.")
+    if any(AVISO_ST_A_CONFIRMAR in ln["obs"] for ln in linhas):
+        avisos.append("Há itens com NCM possivelmente sujeito a ST sem MVA configurada: o valor pode estar a menor.")
     totais = {}
     for ln in linhas:
         t = totais.setdefault(ln["tipo"], {"itens": 0, "valor": Decimal("0"), "fcp": Decimal("0")})

@@ -1,0 +1,58 @@
+{
+  "_leia_me": [
+    "RASCUNHO de 26/09/2026, montado com trechos de busca: nenhum texto oficial foi lido na íntegra.",
+    "A calculadora se recusa a usar este arquivo até um contador conferir cada regra e preencher validado_por e validado_em.",
+    "Referência e lista de conferência: docs/referencias/icms-mg-simples.md.",
+    "Alíquotas em fração: 0.18 = 18%."
+  ],
+  "uf": "MG",
+  "validado_por": "",
+  "validado_em": "",
+  "fontes_legais": [
+    "LC 123/2006, art. 13, § 1º, XIII, 'g', 2 (antecipação sem encerramento) e 'h' (DIFAL)",
+    "Lei MG 6.763/1975: art. 6º, § 5º, 'f' (antecipação do Simples, segundo fontes secundárias) e art. 12-A (FEM)",
+    "RICMS/MG 2023 (Decreto 48.589/2023, em vigor desde 01/07/2023): art. 3º, VII; art. 4º, VI, XII e § 7º; art. 112, § 7º, II e III",
+    "RICMS/MG 2023, Anexo VII, Parte 2 (substituição tributária), alterado pelos Decretos 49.233/2026 e 49.281/2026",
+    "Decreto 48.423/2022 (antecipação do Simples: dia 20 do 2º mês seguinte)",
+    "IN SUTRI 001/2016, art. 2º, III (crédito pela alíquota interestadual mesmo sem destaque) e IN SUTRI 001/2021 (fato gerador na emissão da NF-e)",
+    "Orientação DOLT/SUTRI 002/2016 (base dupla; FEM do Simples no DIFAL e na ST)",
+    "STF Tema 517 (RE 970.821) e ADI 6030",
+    "Protocolos ICMS 203/2009 (bicicletas: MG, RJ, SC, PR), 29/2009 (MG-SP, revogado pelo Prot. 110/2026 a partir de 01/10/2026) e 32/2009 (materiais de construção MG-SP)"
+  ],
+  "finalidade_padrao": "revenda",
+  "aliquota_interna_padrao": 0.18,
+  "aliquotas_internas_por_ncm": {},
+  "fcp": 0.0,
+  "antecipacao_parcial": {
+    "aplica": true,
+    "base": "dupla",
+    "inclui_ipi": false,
+    "reducao_simples": 0.0,
+    "credito_fornecedor_simples": "aliquota_interestadual"
+  },
+  "antecipacao_st": {
+    "aplica": true,
+    "usar_mva_ajustada": true,
+    "credito_fornecedor_simples": "aliquota_interestadual",
+    "mva_por_ncm": {},
+    "ncm_a_confirmar": ["8712", "8714", "40115000", "40132000", "85121000", "6907", "6910"]
+  },
+  "difal_uso_consumo_ativo": {
+    "aplica": true,
+    "base": "dupla",
+    "inclui_ipi": true,
+    "credito_fornecedor_simples": "aliquota_interestadual"
+  },
+  "vencimentos": {
+    "antecipacao_simples": "dia 20 do 2º mês seguinte à emissão da NF-e (Decreto 48.423/2022; RICMS/2023, art. 112, § 7º, III)",
+    "st_e_difal_na_destda": "dia 2 do 2º mês seguinte, ou o próximo dia útil (RICMS/2023, art. 112, § 7º, II, 'c')",
+    "guia": "DAE emitido no SIARE; códigos de receita a confirmar"
+  },
+  "_pendencias": [
+    "mva_por_ncm vazio: preencher 8712, 8714, 4011.50.00, 4013.20.00, 8512.10.00, 6907 e 6910 com capítulo, item e MVA do Anexo VII, Parte 2. Até lá a calculadora avisa e calcula esses itens sem ST, o que pode dar valor a menor.",
+    "A partir de 01/10/2026 SP deixa a ST de vários segmentos (Protocolos 90 a 123/2026) e o Prot. 29/2009 (bicicletas MG-SP) está revogado: compras de SP podem chegar sem ST retida.",
+    "FEM (+2 p.p.) só para os NCMs do art. 12-A da Lei 6.763/1975. Bicicletas e cerâmicas não estão na lista. A calculadora só tem 'fcp' global, por isso 0.",
+    "Em MG, 'revenda' também cobre insumo de industrialização e uso na prestação de serviço: o cálculo é o mesmo.",
+    "Frete FOB em CT-e separado: regra não confirmada."
+  ]
+}

@@ -29,6 +29,18 @@ ST e DIFAL de uso e consumo ou ativo. Depois, conferir com a Domínio.
    calculadora vai para a guia estadual e a configuração entra como sugestão no relatório.
 4. Anote no `log.md` os totais: antecipação parcial, antecipação com ST, DIFAL e FCP.
 
+## Minas Gerais
+
+- **Regras:** `config/uf/MG.json` é um rascunho ainda não validado. Os detalhes e a lista de conferência estão em
+  `docs/referencias/icms-mg-simples.md`.
+- **Antecipação do Simples:**
+  - base dupla, sem IPI;
+  - crédito pela alíquota interestadual, mesmo sem destaque;
+  - vence no dia 20 do 2º mês após a emissão da NF-e.
+- **ST sem retenção** (a partir de 01/10/2026, SP deixa a ST em vários segmentos): o comprador recolhe na entrada. Se
+  a calculadora avisar "NCM possivelmente sujeito a ST", pare: a MVA ainda não está configurada.
+- **Na Domínio:** imposto 27 calculado por nota (solução 8368). [MAPEAR] A tela e o código do DIFAL.
+
 ## Quando parar
 - Divergência entre a calculadora e a Domínio.
 - Item com finalidade incerta que muda o imposto, ou UF sem configuração validada.

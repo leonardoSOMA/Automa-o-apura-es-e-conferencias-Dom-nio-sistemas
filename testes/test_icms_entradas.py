@@ -116,5 +116,34 @@ class TestICMSEntradas(unittest.TestCase):
         self.assertTrue(any("presumida" in a for a in r["avisos"]))
 
 
+class TestRascunhoMG(unittest.TestCase):
+    """Confere o rascunho config/uf/MG.json contra o exemplo de base dupla da SEF/MG. Não valida a legislação."""
+
+    def setUp(self):
+        self.xml = Path(tempfile.mkdtemp()) / "xml"
+        self.cfg = carregar_config("MG")
+
+    def item(self, itens, crt="3"):
+        gravar(self.xml, "n1.xml", nfe_xml(chave(1), "00000000000100", "SP", CLIENTE, "MG", itens, emit_crt=crt))
+        r = calcular(self.xml, "MG", CLIENTE, self.cfg)
+        return r, r["itens"][0]
+
+    def test_exemplo_da_sef_base_dupla(self):
+        r, it = self.item([{"vprod": "1000.00", "cst": "00", "picms": "12.00", "vicms": "120.00"}])
+        self.assertEqual(it["tipo"], "antecipacao_parcial")
+        self.assertEqual(it["valor"], Decimal("73.17"))  # (1000 - 120) / 0,82 x 18% - 120
+        self.assertFalse(r["config_validada"])
+
+    def test_fornecedor_do_simples_credito_pela_aliquota_interestadual(self):
+        _, it = self.item([{"vprod": "1000.00", "csosn": "102"}], crt="1")
+        self.assertEqual(it["credito"], Decimal("120.00"))
+        self.assertEqual(it["valor"], Decimal("73.17"))
+
+    def test_ncm_que_pode_estar_na_st_gera_aviso(self):
+        r, it = self.item([{"vprod": "1000.00", "cst": "00", "picms": "12.00", "vicms": "120.00", "ncm": "87120010"}])
+        self.assertTrue(any("possivelmente sujeito a ST" in o for o in it["obs"]))
+        self.assertTrue(any("possivelmente sujeito a ST" in a for a in r["avisos"]))
+
+
 if __name__ == "__main__":
     unittest.main()

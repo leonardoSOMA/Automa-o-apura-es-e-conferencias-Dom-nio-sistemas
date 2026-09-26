@@ -9,9 +9,13 @@ Cada fonte ainda precisa ser confirmada:
   ou download manual.
 - **NF-e/NFC-e de saída.** [MAPEAR] XML enviado pelo cliente (Acessórias, e-mail ou ERP), ou notas com o CNPJ do
   escritório no autXML.
-- **NFS-e prestadas e tomadas**, que são o documento principal das prestadoras de serviço.
-  - Desde 01/11/2026 as ME/EPP do Simples emitem pelo Emissor Nacional, então as notas estão no Ambiente de Dados
-    Nacional (ADN).
+- **NFS-e prestadas e tomadas**, que são o documento principal das prestadoras de serviço. Rotas por município em
+  `docs/referencias/nfse-municipios.md`.
+  - **ADN (API nacional).** Traz prestadas e tomadas com o certificado A1 da própria empresa; não aceita procuração.
+    Serve para São Thomé das Letras e Varginha. A partir das notas de 01/11/2026, serve para todas as ME/EPP do
+    Simples, que passam a emitir pelo Emissor Nacional.
+  - **Três Corações até 31/10/2026 (sistema E&L).** Procure primeiro no ADN. Se as notas não estiverem lá, use o web
+    service ou o portal da E&L, que só trazem as notas prestadas; as tomadas vêm do cliente.
   - [MAPEAR] Como o escritório baixa hoje: portal, captura ou Domínio.
   - Resumo das NFS-e: `python ferramentas/nfse.py resumo <pasta> --cnpj <CNPJ>` (serviços por código, ISS retido,
     município de incidência, retenções).
