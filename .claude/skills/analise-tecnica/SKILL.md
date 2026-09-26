@@ -65,17 +65,22 @@ Impacto: <R$ no mês> · <R$ em 12 meses, se calculado> · <a maior | a menor>
 | Código | Análise | Quando roda | Ferramentas |
 |---|---|---|---|
 | **AT-01** | **Fator R e anexo (III × V)** · [roteiro](analises/AT-01-fator-r.md) | Fechamento (antes de transmitir) e varredura | `cnpj.py`, `nfse.py`, `analise_fator_r.py`, `das_simples.py` |
-| AT-02 | ISS retido × segregação no PGDAS-D. Se o ISS retido não for segregado, ele é pago duas vezes. | Fechamento | `nfse.py`, `das_simples.py` |
-| AT-03 | ISS devido a outro município (LC 116, art. 3º) informado corretamente | Fechamento | `nfse.py` |
+| AT-02 | ISS retido × segregação no PGDAS-D. Se o ISS retido não for segregado, ele é pago duas vezes. | Fechamento | `nfse.py`, `analise_iss.py` |
+| AT-03 | ISS devido a outro município (LC 116, art. 3º) informado corretamente | Fechamento | `nfse.py`, `analise_iss.py` |
 | AT-04 | CNAE × serviço faturado. Serviço sem CNAE no cadastro, atividade impeditiva, anexo incoerente com o que se fatura. | Varredura | `cnpj.py`, `nfse.py` |
-| AT-05 | Retenções federais indevidas em notas de optante (IRRF, CSRF, INSS fora do Anexo IV): valor a recuperar e orientação ao cliente | Fechamento e varredura | `nfse.py` |
+| AT-05 | Retenções federais indevidas em notas de optante (IRRF, CSRF, INSS fora do Anexo IV): valor a recuperar e orientação ao cliente | Fechamento e varredura | `nfse.py`, `analise_iss.py` |
 | AT-06 | Anexo IV. A CPP é paga fora do DAS, e a retenção de INSS de 11% precisa estar tratada. | Varredura | `nfse.py`, folha |
 | AT-07 | **Planejamento do fator r.** Fator r entre 20% e 28%: quanto de pró-labore leva ao Anexo III e qual a economia líquida. | Varredura trimestral | `analise_fator_r.py`, `das_simples.py` |
 | AT-08 | Limite, sublimite e crescimento. RBT12 perto de R$ 3,6 mi ou R$ 4,8 mi, com projeção. | Fechamento | `das_simples.py` |
 | AT-09 | Comércio: monofásicos e ST segregados nas saídas | Fechamento | `nfe.py`, `das_simples.py` |
 | AT-10 | Comércio: antecipação e DIFAL devidos e recolhidos | Fechamento | `icms_entradas.py` |
 
-As análises AT-02 a AT-10 seguem o mesmo método. Os roteiros detalhados são escritos conforme cada uma é usada.
+Ferramentas prontas:
+- `analise_fator_r.py`: AT-01 e o cálculo do AT-07.
+- `analise_iss.py`: AT-02, AT-03 e AT-05, com rascunho de parecer.
+- `varredura.py`: roda a AT-01 na carteira e ordena os achados por impacto em reais.
+
+As demais seguem o mesmo método. Os roteiros detalhados são escritos conforme cada uma é usada.
 
 ## Quando rodar
 
@@ -84,7 +89,8 @@ As análises AT-02 a AT-10 seguem o mesmo método. Os roteiros detalhados são e
   - comércio: AT-08, AT-09 e AT-10.
 
   "Erro provável" com impacto acima de R$ 50 no mês **bloqueia a transmissão** até uma pessoa decidir.
-- **Na varredura da carteira**, sob demanda ou por trimestre:
+- **Na varredura da carteira** (`python ferramentas/varredura.py <pasta> --saida trabalho/varreduras/<data>`), sob
+  demanda ou por trimestre:
   - roda todas as análises em todas as empresas autorizadas;
   - gera `trabalho/varreduras/<AAAA-MM-DD>/achados.md`, com uma linha por achado ordenada pelo impacto em reais, e os
     pareceres.
