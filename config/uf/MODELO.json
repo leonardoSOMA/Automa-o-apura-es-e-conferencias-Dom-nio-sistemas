@@ -1,0 +1,39 @@
+{
+  "_leia_me": [
+    "Copie este arquivo para config/uf/<UF>.json (ex.: BA.json) e preencha com a legislação da UF.",
+    "Os valores abaixo são EXEMPLOS de formato, não regras reais de nenhum estado.",
+    "Só preencha 'validado_por' e 'validado_em' depois que um contador conferir cada regra.",
+    "Alíquotas em fração: 0.18 = 18%."
+  ],
+  "uf": "XX",
+  "validado_por": "",
+  "validado_em": "",
+  "fontes_legais": [],
+  "finalidade_padrao": "revenda",
+  "aliquota_interna_padrao": 0.18,
+  "aliquotas_internas_por_ncm": {
+    "_exemplo_ncm_prefixo": 0.25
+  },
+  "fcp": 0.0,
+  "antecipacao_parcial": {
+    "aplica": true,
+    "base": "unica",
+    "inclui_ipi": false,
+    "reducao_simples": 0.0,
+    "credito_fornecedor_simples": "aliquota_interestadual"
+  },
+  "antecipacao_st": {
+    "aplica": true,
+    "usar_mva_ajustada": true,
+    "credito_fornecedor_simples": "aliquota_interestadual",
+    "mva_por_ncm": {
+      "_exemplo_ncm_prefixo": 0.40
+    }
+  },
+  "difal_uso_consumo_ativo": {
+    "aplica": true,
+    "base": "dupla",
+    "inclui_ipi": true,
+    "credito_fornecedor_simples": "aliquota_interestadual"
+  }
+}

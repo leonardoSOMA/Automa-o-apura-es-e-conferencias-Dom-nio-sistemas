@@ -1,5 +1,22 @@
 # Ferramentas
 
+## Ferramentas do agente
+
+Só usam a biblioteca padrão do Python.
+
+| Ferramenta | Para quê | Exemplo |
+|---|---|---|
+| `nfe.py` | Ler XML de NF-e/NFC-e e resumir o mês: entradas, saídas, canceladas, duplicadas | `python ferramentas/nfe.py resumo <pasta> --cnpj <CNPJ> --competencia 2026-09` |
+| `das_simples.py` | Recalcular o DAS (Anexos I a V, segregação de ST, monofásico, ISS retido, fator r) | `python ferramentas/das_simples.py --rbt12 600000 --anexo I --receita normal=40000 --receita st=10000` |
+| `icms_entradas.py` | Antecipação parcial, antecipação com ST e DIFAL nas compras de outros estados, pelas regras de `config/uf/<UF>.json` | `python ferramentas/icms_entradas.py <pasta> --uf BA --cnpj <CNPJ> --saida trabalho/.../icms` |
+| `acessorias.py` | Enviar guias ao robô e-Contínuo e consultar entregas pela API do Acessórias | `python ferramentas/acessorias.py enviar DAS.pdf` (simula; `--confirmo-envio` envia) |
+
+As regras de ICMS por UF precisam ser preenchidas e **validadas por um contador** antes do uso. Enquanto isso, a
+calculadora se recusa a rodar sem `--permitir-nao-validada`. As tabelas do DAS valem até 12/2026. Em 2027 a repartição
+muda com a CBS/IBS e as tabelas precisam ser atualizadas.
+
+## Geradores do plano (versão 1)
+
 Geradores dos artefatos da Fase 0. O catálogo de auditorias tem uma fonte única, `catalogo.py`. Altere as regras lá e
 gere de novo o CSV e a planilha, para que tudo continue batendo.
 

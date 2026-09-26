@@ -1,0 +1,2 @@
+codigo_dominio;cnpj;razao_social;uf;anexo;nivel_autonomia;observacao
+101;00000000000100;EMPRESA EXEMPLO LTDA;XX;I;1;linha de exemplo: copie para empresas_autorizadas.csv (fora do Git)

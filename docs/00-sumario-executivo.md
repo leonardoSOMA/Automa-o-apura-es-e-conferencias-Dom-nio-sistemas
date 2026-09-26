@@ -1,5 +1,9 @@
 # 00 · Sumário executivo
 
+> **Atualização 26/09/2026:** a visão passou a ser um agente de IA que opera a Domínio e fecha o mês das empresas
+> menores, com a equipe só aprovando. Veja [09 · Agente fiscal autônomo](09-agente-fiscal-autonomo.md). Este sumário
+> descreve a versão 1.
+
 **Plano diretor de automação do departamento fiscal · versão 1.0 · 26/09/2026**
 
 ## O problema

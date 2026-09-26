@@ -1,0 +1,8 @@
+cfop_fornecedor;finalidade;cfop_entrada;acumulador;observacao
+5102;revenda;1102;[código do escritório];compra para comercialização dentro do estado
+6102;revenda;2102;[código do escritório];compra para comercialização de outro estado
+5405;revenda;1403;[código do escritório];compra com ST dentro do estado
+6403;revenda;2403;[código do escritório];compra com ST de outro estado
+5102;uso_consumo;1556;[código do escritório];material de uso e consumo
+6102;uso_consumo;2556;[código do escritório];uso e consumo de outro estado (DIFAL)
+6102;ativo;2551;[código do escritório];ativo imobilizado de outro estado (DIFAL)

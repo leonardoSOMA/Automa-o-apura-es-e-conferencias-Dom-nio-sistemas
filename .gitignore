@@ -1,0 +1,13 @@
+# Dados de clientes e do escritório: nunca versionar
+trabalho/
+captura/
+empresas/
+config/empresas_autorizadas.csv
+*.pfx
+*.p12
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
